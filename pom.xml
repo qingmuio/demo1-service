@@ -152,7 +152,7 @@
                 <artifactId>docker-maven-plugin</artifactId>
                 <configuration>
                     <imageName>
-                        freemanliu/demo1-service:v1.1.0
+                        freemanliu/demo1-service:v1.2.0
                     </imageName>
                     <registryUrl></registryUrl>
                     <workdir>/work</workdir>

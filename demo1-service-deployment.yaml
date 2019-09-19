@@ -48,7 +48,7 @@ spec:
               weight: 1
       containers:
         - name: demo1-service
-          image: freemanliu/demo1-service:v1.0.1
+          image: freemanliu/demo1-service:v1.0.0
           imagePullPolicy: Always
           lifecycle:
             preStop:

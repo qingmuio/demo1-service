@@ -31,8 +31,10 @@ spring:
 
 logging:
   logPath: /var/log/${spring.application.name}
-  level:
     com.netflix.discovery.shared.resolver.aws: ERROR
+    org:
+      springframework: info
+
 
 
 management:
