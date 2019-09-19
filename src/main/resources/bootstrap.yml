@@ -9,9 +9,10 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: ${EUREKA_SERVER:http://172.224.3.12:8761/eureka/,http://172.224.7.120:8761/eureka/,http://172.224.4.180:8761/eureka/}
+      defaultZone: ${EUREKA_SERVER:http://172.224.4.7:8761/eureka/}
+    registry-fetch-interval-seconds: 5
   instance:
     prefer-ip-address: true
-    lease-renewal-interval-in-seconds: 10
-    lease-expiration-duration-in-seconds: 20
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 10
     instance-id: ${spring.application.name}:${server.port}@${random.long(1000000,9999999)}

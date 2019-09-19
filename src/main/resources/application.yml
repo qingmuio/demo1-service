@@ -45,8 +45,15 @@ feign:
     enabled: true
   httpclient:
     enabled: false
+
 ribbon:
-  okhttp:
-    enabled: true
-  MaxAutoRetries: 0
-  MaxAutoRetriesNextServer: 0
+  # ribbon缓存时间
+  ServerListRefreshInterval: 2000
+  ReadTimeout: 30000
+  ConnectTimeout: 30000
+  # 是否所有操作都重试
+  OkToRetryOnAllOperations: true
+  # 重试负载均衡其他的实例最大重试次数,不包括首次server
+  MaxAutoRetriesNextServer: 2
+  # 同一台实例最大重试次数,不包括首次调用
+  MaxAutoRetries: 1

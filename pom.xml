@@ -15,7 +15,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <spring-cloud.version>Greenwich.SR2</spring-cloud.version>
+        <spring-cloud.version>Greenwich.SR3</spring-cloud.version>
     </properties>
 
     <dependencies>
@@ -152,7 +152,7 @@
                 <artifactId>docker-maven-plugin</artifactId>
                 <configuration>
                     <imageName>
-                        freemanliu/demo1-service:v1.0.1
+                        freemanliu/demo1-service:v1.1.0
                     </imageName>
                     <registryUrl></registryUrl>
                     <workdir>/work</workdir>
