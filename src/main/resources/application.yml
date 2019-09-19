@@ -1,0 +1,52 @@
+server:
+  undertow:
+    worker-threads: 50
+    io-threads: 2
+  port: 8100
+  compression:
+    enabled: true
+    mime-types: application/json,application/javascript,text/plain,application/x-javascript,text/css,application/xml
+    min-response-size: 4096
+spring:
+  sleuth:
+    web:
+      client:
+        enabled: true
+    sampler:
+      # 配置采集率1.0表示100%，0.1表示10%
+      probability: ${SAMPLER_PROBABILITY:1.0}
+  application:
+    name: demo1-service
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  zipkin:
+    # 配置zipkin服务地址
+    base-url: ${ZIPKIN:http://10.96.0.13:9411/}
+#  jackson:
+#    time-zone:
+
+
+logging:
+  logPath: /var/log/${spring.application.name}
+  level:
+    com.netflix.discovery.shared.resolver.aws: ERROR
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+feign:
+  okhttp:
+    enabled: true
+  httpclient:
+    enabled: false
+ribbon:
+  okhttp:
+    enabled: true
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 0
