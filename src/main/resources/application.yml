@@ -25,15 +25,30 @@ spring:
   zipkin:
     # 配置zipkin服务地址
     base-url: ${ZIPKIN:http://10.96.0.13:9411/}
-#  jackson:
-#    time-zone:
-
+  jackson:
+    time-zone: GMT+8
+    default-property-inclusion: NON_NULL
+    deserialization:
+      ACCEPT_EMPTY_STRING_AS_NULL_OBJECT: true
+      FAIL_ON_UNKNOWN_PROPERTIES: false
+      READ_UNKNOWN_ENUM_VALUES_AS_NULL: true
+    date-format: yyyy-MM-dd HH:mm:ss
 
 logging:
   logPath: /var/log/${spring.application.name}
-    com.netflix.discovery.shared.resolver.aws: ERROR
+  level:
     org:
       springframework: info
+    com:
+      netflix:
+        discovery:
+          shared:
+            resolver:
+              aws: error
+      alibaba:
+        nacos:
+          client:
+            naming: error
 
 
 

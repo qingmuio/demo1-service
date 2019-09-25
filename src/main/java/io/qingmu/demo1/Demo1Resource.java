@@ -1,22 +1,30 @@
 package io.qingmu.demo1;
 
+import lombok.Builder;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-public class Demo1Resource {
+import java.util.Date;
 
+@RestController
+//@RefreshScope
+//@RequiredArgsConstructor(onConstructor_ = @Autowired)
+public class Demo1Resource {
     @Autowired
     private Demo2Client demo2Client;
-
-    @Value("${demo1Value}")
-    private String demo1Value;
+    @Autowired
+    private Config config;
 
     @GetMapping("hello")
-    public String hello() {
-        return demo1Value + " " + demo2Client.world();
+    public User hello() {
+        final String s = config.getDemo1Value() + " " + demo2Client.world();
+        final User user = User.builder().date(new Date())
+                .name(s)
+                .build();
+        return user;
     }
 
     @GetMapping("hello2")
@@ -25,4 +33,15 @@ public class Demo1Resource {
     }
 
 
+    @PostMapping("/create")
+    public UserCreateDto create(UserCreateDto userCreateDto) {
+        return null;
+    }
+
+    @Data
+    @Builder
+    public static class User {
+        private String name;
+        private Date date;
+    }
 }

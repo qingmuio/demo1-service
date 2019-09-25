@@ -18,6 +18,7 @@
         <spring-cloud.version>Greenwich.SR3</spring-cloud.version>
     </properties>
 
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -33,28 +34,28 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-undertow</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-config</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.sun.jersey</groupId>
-                    <artifactId>jersey-client</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.sun.jersey</groupId>
-                    <artifactId>jersey-core</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.sun.jersey.contribs</groupId>
-                    <artifactId>jersey-apache-client4</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-config</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>com.sun.jersey</groupId>-->
+<!--                    <artifactId>jersey-client</artifactId>-->
+<!--                </exclusion>-->
+<!--                <exclusion>-->
+<!--                    <groupId>com.sun.jersey</groupId>-->
+<!--                    <artifactId>jersey-core</artifactId>-->
+<!--                </exclusion>-->
+<!--                <exclusion>-->
+<!--                    <groupId>com.sun.jersey.contribs</groupId>-->
+<!--                    <artifactId>jersey-apache-client4</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
@@ -127,6 +128,34 @@
             <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
             <version>0.9.0.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.goudai</groupId>
+            <artifactId>gd-generator-default</artifactId>
+            <version>2.0.16</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-micro-spring-boot-starter</artifactId>
+            <version>1.9.6</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -135,6 +164,13 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>2.1.0.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -150,6 +186,7 @@
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
+                <version>1.2.1</version>
                 <configuration>
                     <imageName>
                         freemanliu/demo1-service:v1.2.0
